@@ -20,7 +20,6 @@ task("copyAndroidNatives") {
             val match = ".*natives-(.*)\\.jar".toRegex().matchEntire(jar.name)
             if (match != null) {
                 val outputDir = file("$libs/${match.groupValues.get(1)}")
-                println("OHO $outputDir")
                 copy {
                     from(zipTree(jar))
                     into(outputDir)
@@ -74,31 +73,6 @@ tasks.configureEach {
         dependsOn("copyAndroidNatives")
     }
 }
-//
-//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
-//    jvm = JavaVersion.VERSION_11.toString()
-//}
-// Pure Java
-//tasks.withType<JavaCompile>().configureEach {
-//    sourceCompatibility = JavaVersion.VERSION_11.toString()
-//    targetCompatibility = JavaVersion.VERSION_11.toString()
-//}
-//// Android
-//android {
-//    compileOptions {
-//        sourceCompatibility = JavaVersion.VERSION_11
-//        targetCompatibility = JavaVersion.VERSION_11
-//    }
-//}
-//
-tasks.withType<ScalaCompile> {
-    scalaCompileOptions.apply {
-        // KEEP IN SYNC with java.toolchain above
-//        additionalParameters = additionalParameters.orEmpty() + "-target:jvm-1.8"
-        targetCompatibility = "99" // JavaVersion.VERSION_1_8.toString()
-    }
-}
-
 
 dependencies {
     implementation(libs.androidx.core.ktx)
