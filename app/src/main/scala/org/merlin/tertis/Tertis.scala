@@ -13,12 +13,13 @@ import org.merlin.tertis.home.Home
 import org.merlin.tertis.util.{GarbageCan, TextureWrapper}
 
 import java.util.Properties
+import scala.compiletime.uninitialized
 
 class Tertis extends ApplicationAdapter:
   import Tertis.garbage
 
-  private var batch: PolygonSpriteBatch = _
-  private var scene: Scene              = _
+  private var batch: PolygonSpriteBatch = uninitialized
+  private var scene: Scene              = uninitialized
 
   override def create(): Unit =
     Gdx.input.setCatchKey(Input.Keys.BACK, true)
@@ -90,41 +91,41 @@ class Tertis extends ApplicationAdapter:
 object Tertis:
   implicit val garbage: GarbageCan = new GarbageCan
 
-  var version: String = _
-  var key: String     = _
+  var version: String = uninitialized
+  var key: String     = uninitialized
 
-  var logo: TextureWrapper = _
-  var play: TextureWrapper = _
+  var logo: TextureWrapper = uninitialized
+  var play: TextureWrapper = uninitialized
 
-  var separator: TextureWrapper   = _
-  var tap: TextureWrapper         = _
-  var swipeLeft: TextureWrapper   = _
-  var swipeRight: TextureWrapper  = _
-  var swipeDown: TextureWrapper   = _
-  var swipeUpDown: TextureWrapper = _
+  var separator: TextureWrapper   = uninitialized
+  var tap: TextureWrapper         = uninitialized
+  var swipeLeft: TextureWrapper   = uninitialized
+  var swipeRight: TextureWrapper  = uninitialized
+  var swipeDown: TextureWrapper   = uninitialized
+  var swipeUpDown: TextureWrapper = uninitialized
 
-  var soundOff: TextureWrapper = _
-  var soundOn: TextureWrapper  = _
-  var musicOff: TextureWrapper = _
-  var musicOn: TextureWrapper  = _
-  var help: TextureWrapper     = _
-  var settings: TextureWrapper = _
-  var close: TextureWrapper    = _
-  var checkOn: TextureWrapper  = _
-  var checkOff: TextureWrapper = _
-  var trash: TextureWrapper    = _
-  var arrowKey: TextureWrapper = _
-  var metaKey: TextureWrapper  = _
+  var soundOff: TextureWrapper = uninitialized
+  var soundOn: TextureWrapper  = uninitialized
+  var musicOff: TextureWrapper = uninitialized
+  var musicOn: TextureWrapper  = uninitialized
+  var help: TextureWrapper     = uninitialized
+  var settings: TextureWrapper = uninitialized
+  var close: TextureWrapper    = uninitialized
+  var checkOn: TextureWrapper  = uninitialized
+  var checkOff: TextureWrapper = uninitialized
+  var trash: TextureWrapper    = uninitialized
+  var arrowKey: TextureWrapper = uninitialized
+  var metaKey: TextureWrapper  = uninitialized
 
-  var pixture: Texture = _
+  var pixture: Texture = uninitialized
 
-  var click: Sound = _
-  var drop: Sound  = _
-  var crash: Sound = _
-  var end: Sound   = _
+  var click: Sound = uninitialized
+  var drop: Sound  = uninitialized
+  var crash: Sound = uninitialized
+  var end: Sound   = uninitialized
 
-  var globalHigh: Int = _
-  var globalTime: Int = _
+  var globalHigh: Int = uninitialized
+  var globalTime: Int = uninitialized
 
   def mobile: Boolean = isMobile(Gdx.app.getType)
 

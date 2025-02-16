@@ -16,7 +16,7 @@ package object tertis {
   implicit class AnyOps(val self: Any) extends AnyVal {
 
     /** Replace this value with [a]. */
-    def as[A](a: A): A = a
+    infix def as[A](a: A): A = a
   }
 
   implicit class FloatOps(val self: Float) extends AnyVal {

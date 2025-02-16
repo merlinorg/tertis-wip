@@ -23,7 +23,7 @@ object Region {
     Region(color, generator, dead)
   }
 
-  private[this] var generator: Int = 0
+  private var generator: Int = 0
 }
 
 class Board(game: Game) {
