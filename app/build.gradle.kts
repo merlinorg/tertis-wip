@@ -17,7 +17,7 @@ task("copyAndroidNatives") {
         file("$libs/x86").mkdirs()
 
         configurations["natives"].files.forEach { jar ->
-            val match = "natives-(.*)\\.jar".toRegex().matchEntire(jar.name)
+            val match = ".*natives-(.*)\\.jar".toRegex().matchEntire(jar.name)
             if (match != null) {
                 val outputDir = file("$libs/${match.groupValues.get(1)}")
                 println("OHO $outputDir")
