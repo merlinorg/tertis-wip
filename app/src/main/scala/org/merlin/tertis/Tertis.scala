@@ -18,7 +18,7 @@ class Tertis extends ApplicationAdapter:
   import Tertis.garbage
 
   private var batch: PolygonSpriteBatch = _
-  private var scene: Scene = _
+  private var scene: Scene              = _
 
   override def create(): Unit =
     Gdx.input.setCatchKey(Input.Keys.BACK, true)
@@ -28,7 +28,7 @@ class Tertis extends ApplicationAdapter:
     batch = garbage.add(new PolygonSpriteBatch())
 
     val properties = new Properties
-    val is = Tertis.getClass.getResourceAsStream("/app.properties")
+    val is         = Tertis.getClass.getResourceAsStream("/app.properties")
     if (is ne null) {
       properties.load(is)
       is.close()
@@ -57,8 +57,7 @@ class Tertis extends ApplicationAdapter:
     Tertis.checkOff = TextureWrapper.load("check-off.png")
     Tertis.trash = TextureWrapper.load("trash.png")
     Tertis.arrowKey = TextureWrapper.load("arrow-key.png")
-    Tertis.metaKey =
-      TextureWrapper.load("meta-key.png") // linear filter doesn't help
+    Tertis.metaKey = TextureWrapper.load("meta-key.png") // linear filter doesn't help
 
     Tertis.click = Tertis.loadSound("click.mp3")
     Tertis.drop = Tertis.loadSound("drop.mp3")
@@ -92,37 +91,37 @@ object Tertis:
   implicit val garbage: GarbageCan = new GarbageCan
 
   var version: String = _
-  var key: String = _
+  var key: String     = _
 
   var logo: TextureWrapper = _
   var play: TextureWrapper = _
 
-  var separator: TextureWrapper = _
-  var tap: TextureWrapper = _
-  var swipeLeft: TextureWrapper = _
-  var swipeRight: TextureWrapper = _
-  var swipeDown: TextureWrapper = _
+  var separator: TextureWrapper   = _
+  var tap: TextureWrapper         = _
+  var swipeLeft: TextureWrapper   = _
+  var swipeRight: TextureWrapper  = _
+  var swipeDown: TextureWrapper   = _
   var swipeUpDown: TextureWrapper = _
 
   var soundOff: TextureWrapper = _
-  var soundOn: TextureWrapper = _
+  var soundOn: TextureWrapper  = _
   var musicOff: TextureWrapper = _
-  var musicOn: TextureWrapper = _
-  var help: TextureWrapper = _
+  var musicOn: TextureWrapper  = _
+  var help: TextureWrapper     = _
   var settings: TextureWrapper = _
-  var close: TextureWrapper = _
-  var checkOn: TextureWrapper = _
+  var close: TextureWrapper    = _
+  var checkOn: TextureWrapper  = _
   var checkOff: TextureWrapper = _
-  var trash: TextureWrapper = _
+  var trash: TextureWrapper    = _
   var arrowKey: TextureWrapper = _
-  var metaKey: TextureWrapper = _
+  var metaKey: TextureWrapper  = _
 
   var pixture: Texture = _
 
   var click: Sound = _
-  var drop: Sound = _
+  var drop: Sound  = _
   var crash: Sound = _
-  var end: Sound = _
+  var end: Sound   = _
 
   var globalHigh: Int = _
   var globalTime: Int = _
@@ -136,10 +135,10 @@ object Tertis:
     garbage.add(Gdx.audio.newSound(Gdx.files.internal(path)))
 
   private def solidTexture(r: Float, g: Float, b: Float, a: Float)(implicit
-      garbage: GarbageCan
+    garbage: GarbageCan
   ): Texture =
     val pixel = new Pixmap(1, 1, Format.RGBA8888)
     pixel.setColor(r, g, b, a)
     pixel.fill()
-    val td = new PixmapTextureData(pixel, null, false, true)
+    val td    = new PixmapTextureData(pixel, null, false, true)
     garbage.add(new Texture(td))
