@@ -17,9 +17,6 @@ pluginManagement {
                 url = uri("https://storage.googleapis.com/r8-releases/raw")
             }
         }
-        dependencies {
-            classpath("com.android.tools:r8:8.7.18")
-        }
     }
 }
 dependencyResolutionManagement {
